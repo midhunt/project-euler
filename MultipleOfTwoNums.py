@@ -9,20 +9,22 @@ If we list all the natural numbers below 10 that are multiples of 3 or 5, we get
 Find the sum of all the multiples of 3 or 5 below 1000.
 """
 
-def multipleOfTwoNums(x=3, y=5, max_value=1000):
+def multipleOfTwoNums(x=3, y=5, max_value=100):
     
-    sum = []
+    sum = 0
+    
+    for i in range(max_value):
+        if((i % x == 0) & (i % (x * y) != 0)):
+            sum += i
 
-    x_range = max_value // x
-    y_range = max_value // y
+    for i in range(max_value):
+        if((i % y == 0) & (i % (x * y) != 0)):
+            sum += i
 
-    for i in range(x_range):
-        if (x * (i+1) < max_value):
-            sum = sum.append(x * (i+1))
-
-    for j in range(y_range):
-        if (y * (j+1) < max_value):
-            sum = sum.append(y * (y+1))
+    xy_range = max_value // (x * y)
+    for i in range(xy_range):
+        if (x * y * (i+1) < max_value):
+            sum += x * y * (i+1)
 
     return(sum)
 
